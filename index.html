@@ -59,12 +59,12 @@ button {
 </head>
 <body>
 <div id="buttonContainer">
-  <button id="button1"><img src=./img/note2.png ></button>
-  <button id="button2"><img src='https://lh3.googleusercontent.com/d/15PY9I7Q8WJnUXqXgg77c7yHxWgGUOv0y' ></button>
-  <button id="button3"><img src='https://lh3.googleusercontent.com/d/1b-IszUCmfs5rdnDZrD3Epnj2C7rRYHwo' ></button>
-  <button id="button4"><img src='https://lh3.googleusercontent.com/d/1pmHZG9ls76_X303xNKkMwBg3lvumvT3L' ></button>
-  <button id="button5"><img src='https://lh3.googleusercontent.com/d/1kv1nOJH0E9kLqoLngvydprnfRF9w_lox' ></button>
-  <button id="button6"><img src='https://lh3.googleusercontent.com/d/1byJ7R_PcAGnj7NbXOJR-vUVyb9TxO_WF' ></button>
+  <button id="button1"><img src="./img/note2.png" ></button>
+  <button id="button2"><img src='./img/note4.png' ></button>
+  <button id="button3"><img src='./img/note8.png' ></button>
+  <button id="button4"><img src='./img/rest2.png' ></button>
+  <button id="button5"><img src='./img/rest4.png' ></button>
+  <button id="button6"><img src='./img/rest8.png' ></button>
   <button id="button7">リセット</button>
 </div>
   <div id="imageContainer"></div>
@@ -84,22 +84,22 @@ button {
 
     // ボタンがクリックされたときの処理
     button1.addEventListener('click', function() {
-      showImage(./img/note2.png, 4, 'https://lh3.googleusercontent.com/d/154lwspoBbV7GHSd_96iIgGVPYuisBkjU');
+      showImage('./img/note2.png', 4, './img/crap.png');
     });
     button2.addEventListener('click', function() {
-      showImage('https://lh3.googleusercontent.com/d/15PY9I7Q8WJnUXqXgg77c7yHxWgGUOv0y', 2, 'https://lh3.googleusercontent.com/d/154lwspoBbV7GHSd_96iIgGVPYuisBkjU');
+      showImage('./img/note4.png', 2, './img/crap.png');
     });
     button3.addEventListener('click', function() {
-      showImage('https://lh3.googleusercontent.com/d/1b-IszUCmfs5rdnDZrD3Epnj2C7rRYHwo', 1, 'https://lh3.googleusercontent.com/d/154lwspoBbV7GHSd_96iIgGVPYuisBkjU');
+      showImage('./img/note8.png', 1, './img/crap.png');
     });
     button4.addEventListener('click', function() {
-      showImage('https://lh3.googleusercontent.com/d/1pmHZG9ls76_X303xNKkMwBg3lvumvT3L', 4, 'https://lh3.googleusercontent.com/d/18kI4iDdRIsoVEBgtCZO8-v8yi4-zZ63z');
+      showImage('./img/rest2.png', 4, './img/blank.png');
     });
     button5.addEventListener('click', function() {
-      showImage('https://lh3.googleusercontent.com/d/1kv1nOJH0E9kLqoLngvydprnfRF9w_lox', 2, 'https://lh3.googleusercontent.com/d/18kI4iDdRIsoVEBgtCZO8-v8yi4-zZ63z');
+      showImage('./img/rest4.png', 2, './img/blank.png');
     });
     button6.addEventListener('click', function() {
-      showImage('https://lh3.googleusercontent.com/d/1byJ7R_PcAGnj7NbXOJR-vUVyb9TxO_WF', 1, 'https://lh3.googleusercontent.com/d/18kI4iDdRIsoVEBgtCZO8-v8yi4-zZ63z');
+      showImage('./img/rest8.png', 1, './img/blank.png');
     });
     button7.addEventListener('click', function() {
       reset();
