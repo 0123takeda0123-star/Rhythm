@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <title>ボタンと画像表示</title>
+  <style>
+     body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #buttonContainer {
+  display: flex; /* ボタンを横に並べる */
+}
+button img {
+  width: 30%; 
+}
+button {
+  flex: 1; /* 幅を均等に分配する */
+  height: auto; /* ボタンの高さを設定 */
+}
+    #imageContainer {
+      display: flex;
+      width: 100vw;
+      overflow-x: auto;
+    }
+    .imgs {
+      height: auto;
+      max-width: 10.5%; 
+    }
+    #count {
+      display: none;
+    }
+    .n4 {
+      width:100%;
+      padding-right:19.5%; 
+      padding-left:19.5%;
+      border: 1px solid black;
+    }
+    .n2 {
+      width:100%;
+      padding-right:7%;
+      padding-left:7%; 
+      border: 1px solid black;
+    }
+    .n1 {
+      width:100%;
+      padding-right:0.75%;
+      padding-left:0.75%; 
+      border: 1px solid black;
+    }
+    #button7{
+      fdisplay: flex;
+  align-items: center; /* テキストを垂直方向に中央揃え */
+  justify-content: center; /* テキストを水平方向に中央揃え */
+  font-size: 100%; /* 初期値 */
+}
+  </style>
+</head>
+<body>
+<div id="buttonContainer">
+  <button id="button1"><img src='https://lh3.googleusercontent.com/d/1kXgs9oz9WpWsO6YjX9zPZ26YMh4IizbF' ></button>
+  <button id="button2"><img src='https://lh3.googleusercontent.com/d/15PY9I7Q8WJnUXqXgg77c7yHxWgGUOv0y' ></button>
+  <button id="button3"><img src='https://lh3.googleusercontent.com/d/1b-IszUCmfs5rdnDZrD3Epnj2C7rRYHwo' ></button>
+  <button id="button4"><img src='https://lh3.googleusercontent.com/d/1pmHZG9ls76_X303xNKkMwBg3lvumvT3L' ></button>
+  <button id="button5"><img src='https://lh3.googleusercontent.com/d/1kv1nOJH0E9kLqoLngvydprnfRF9w_lox' ></button>
+  <button id="button6"><img src='https://lh3.googleusercontent.com/d/1byJ7R_PcAGnj7NbXOJR-vUVyb9TxO_WF' ></button>
+  <button id="button7">リセット</button>
+</div>
+  <div id="imageContainer"></div>
+  <div id="crapContainer"></div>
+  <p id="count">8</p>
+
+  <script>
+    //ボタンリスト
+    const button1 = document.getElementById('button1');
+    const button2 = document.getElementById('button2');
+    const button3 = document.getElementById('button3');
+    const button4 = document.getElementById('button4');
+    const button5 = document.getElementById('button5');
+    const button6 = document.getElementById('button6');
+    const button7 = document.getElementById('button7');
+    var count = parseInt(document.getElementById('count').textContent); // 初期値を取得
+
+    // ボタンがクリックされたときの処理
+    button1.addEventListener('click', function() {
+      showImage('https://lh3.googleusercontent.com/d/1kXgs9oz9WpWsO6YjX9zPZ26YMh4IizbF', 4, 'https://lh3.googleusercontent.com/d/154lwspoBbV7GHSd_96iIgGVPYuisBkjU');
+    });
+    button2.addEventListener('click', function() {
+      showImage('https://lh3.googleusercontent.com/d/15PY9I7Q8WJnUXqXgg77c7yHxWgGUOv0y', 2, 'https://lh3.googleusercontent.com/d/154lwspoBbV7GHSd_96iIgGVPYuisBkjU');
+    });
+    button3.addEventListener('click', function() {
+      showImage('https://lh3.googleusercontent.com/d/1b-IszUCmfs5rdnDZrD3Epnj2C7rRYHwo', 1, 'https://lh3.googleusercontent.com/d/154lwspoBbV7GHSd_96iIgGVPYuisBkjU');
+    });
+    button4.addEventListener('click', function() {
+      showImage('https://lh3.googleusercontent.com/d/1pmHZG9ls76_X303xNKkMwBg3lvumvT3L', 4, 'https://lh3.googleusercontent.com/d/18kI4iDdRIsoVEBgtCZO8-v8yi4-zZ63z');
+    });
+    button5.addEventListener('click', function() {
+      showImage('https://lh3.googleusercontent.com/d/1kv1nOJH0E9kLqoLngvydprnfRF9w_lox', 2, 'https://lh3.googleusercontent.com/d/18kI4iDdRIsoVEBgtCZO8-v8yi4-zZ63z');
+    });
+    button6.addEventListener('click', function() {
+      showImage('https://lh3.googleusercontent.com/d/1byJ7R_PcAGnj7NbXOJR-vUVyb9TxO_WF', 1, 'https://lh3.googleusercontent.com/d/18kI4iDdRIsoVEBgtCZO8-v8yi4-zZ63z');
+    });
+    button7.addEventListener('click', function() {
+      reset();
+    });
+
+    // 画像を表示する関数
+    function showImage(imageUrl, buttonNumber, crapUrl) {
+      // 画像要素を作成して表示
+      var imageElement = document.createElement('img');
+      imageElement.src = imageUrl;
+      imageElement.classList.add('imgs');
+      imageElement.classList.add('n'+buttonNumber);
+      var imageElementCrap = document.createElement('img');
+      imageElementCrap.src = crapUrl;
+      imageElementCrap.classList.add('imgs');
+      imageElementCrap.classList.add('n'+buttonNumber);
+      document.getElementById('imageContainer').appendChild(imageElement);
+      document.getElementById('crapContainer').appendChild(imageElementCrap);
+
+     
+      count -= buttonNumber; // countを更新
+      document.getElementById('count').textContent = count; // 更新されたcountを表示
+      check(count);
+    }
+
+    // リセットボタンを押したときの処理
+    function reset() {
+      var container = document.getElementById('imageContainer');
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+       var containerCrap = document.getElementById('crapContainer');
+      while (containerCrap.firstChild) {
+        containerCrap.removeChild(containerCrap.firstChild);
+      }
+      count = 8; // countを初期値に戻す
+      document.getElementById('count').textContent = count; // 初期値を表示
+      check(count);
+    }
+
+    // ボタンを無効化し、グレーアウトする関数
+    function buttonOff(buttons) {
+      buttons.forEach(button => {
+        button.disabled = true;
+        button.style.opacity = "0.25";
+      });
+    }
+
+    // ボタンを有効化する関数
+    function buttonOn(buttons) {
+      buttons.forEach(button => {
+        button.disabled = false;
+        button.style.opacity = "1";
+      });
+    }
+
+    // countの値に応じてボタンを無効化し、グレーアウトする関数
+    function check(count) {
+  if (count >= 4 && count <= 8) { // 4以上8以下の場合
+    buttonOn([button1, button2, button3, button4, button5, button6]);
+  } else if (count === 3 || count === 2) { // 3または2の場合
+    buttonOff([button1, button4]);
+    buttonOn([button2, button3, button5, button6]);
+  } else if (count === 1) { // 1の場合
+    buttonOff([button1, button2, button4, button5]);
+    buttonOn([button3, button6]);
+  } else if (count === 0) { // 0の場合
+    buttonOff([button1, button2, button3, button4, button5, button6]);
+  }
+}
+  </script>
+</body>
+</html>
